@@ -1,0 +1,38 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.json',
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+  ],
+  root: true,
+  env: {
+    node: true,
+    jest: true,
+  },
+  ignorePatterns: ['.eslintrc.js'],
+  rules: {
+    "max-len": ["error", { "code": 140, "tabWidth": 4 }],
+    "quotes": ["error", "single", { "avoidEscape": true }],
+    "indent": "off",
+    '@typescript-eslint/indent': ["error", "tab"],
+    '@typescript-eslint/no-explicit-any': 'off',
+    "object-curly-spacing": "off",
+    "@typescript-eslint/object-curly-spacing": ["error", "always"],
+    'semi': ['error', 'never'],
+    'import/export': 'off',
+    'import/no-unresolved': 'off',
+    '@typescript-eslint/no-shadow': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+  },
+};

@@ -1,0 +1,121 @@
+{
+    "ipcMode": null,
+    "executionRoleArn": "arn:aws:iam::107835905686:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "dnsSearchDomains": [],
+            "environmentFiles": null,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "secretOptions": null,
+                "options": {
+                    "awslogs-group": "/ecs/recruit-api",
+                    "awslogs-region": "ap-northeast-2",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "entryPoint": [],
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "containerPort": 80
+                }
+            ],
+            "command": [
+                "pm2-runtime",
+                "start",
+                "pm2.config.js"
+            ],
+            "linuxParameters": {
+                "capabilities": {
+                    "add": null,
+                    "drop": null
+                },
+                "sharedMemorySize": null,
+                "tmpfs": null,
+                "devices": [],
+                "maxSwap": null,
+                "swappiness": null,
+                "initProcessEnabled": null
+            },
+            "cpu": 0,
+            "environment": [
+                {
+                    "name": "DATABASE_SYNC",
+                    "value": "false"
+                },
+                {
+                    "name": "DATABASE_MASTER_HOST",
+                    "value": "recruit.cluster-crh337yhjs67.ap-northeast-2.rds.amazonaws.com"
+                },
+                {
+                    "name": "DATABASE_POOL_SIZE",
+                    "value": "5"
+                },
+                {
+                    "name": "DATABASE_LOGGING",
+                    "value": "false"
+                },
+                {
+                    "name": "DATABASE_SLAVE_HOST",
+                    "value": "recruit.cluster-ro-crh337yhjs67.ap-northeast-2.rds.amazonaws.com"
+                }
+            ],
+            "resourceRequirements": null,
+            "ulimits": [
+                {
+                    "name": "nofile",
+                    "softLimit": 20000,
+                    "hardLimit": 40000
+                },
+                {
+                    "name": "nproc",
+                    "softLimit": 99999,
+                    "hardLimit": 99999
+                }
+            ],
+            "dnsServers": [],
+            "mountPoints": [],
+            "workingDirectory": null,
+            "secrets": null,
+            "dockerSecurityOptions": [],
+            "memory": null,
+            "memoryReservation": null,
+            "volumesFrom": [],
+            "stopTimeout": null,
+            "image": "107835905686.dkr.ecr.ap-northeast-2.amazonaws.com/recruit-api",
+            "startTimeout": null,
+            "firelensConfiguration": null,
+            "dependsOn": null,
+            "disableNetworking": null,
+            "interactive": null,
+            "healthCheck": null,
+            "essential": true,
+            "links": [],
+            "hostname": null,
+            "extraHosts": [],
+            "pseudoTerminal": false,
+            "user": null,
+            "readonlyRootFilesystem": false,
+            "dockerLabels": null,
+            "systemControls": null,
+            "privileged": false,
+            "name": "recruit-api"
+        }
+    ],
+    "memory": "1024",
+    "taskRoleArn": "arn:aws:iam::107835905686:role/ecsTaskExecutionRole",
+    "family": "recruit-api",
+    "pidMode": null,
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "runtimePlatform": null,
+    "cpu": "512",
+    "inferenceAccelerators": [],
+    "proxyConfiguration": null,
+    "volumes": [],
+    "tags": []
+}

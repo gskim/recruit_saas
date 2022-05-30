@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<a href="https://recruit.s3.ap-northeast-2.amazonaws.com/duty.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAWFCURJXBWMJY7EBE%2F20220421%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20220421T121008Z&X-Amz-Expires=300&X-Amz-Signature=1f8e11177ecb6427b5bbfe7eb246b6cfd7df49b767f91dcfb06383002c84d139&X-Amz-SignedHeaders=host&x-id=GetObject" download="test.json">
+			down
+		</a>
+		<button onclick="aa()" >button</button>
+
+		<script>
+			function aa() {
+				fetch("https://recruit.s3.ap-northeast-2.amazonaws.com/duty.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAWFCURJXBWMJY7EBE%2F20220421%2Fap-northeast-2%2Fs3%2Faws4_request&X-Amz-Date=20220421T121212Z&X-Amz-Expires=300&X-Amz-Signature=1e1a0185e1cb20593b29677cec27a009368d81d9ebff4de643aca0e944d5f3dc&X-Amz-SignedHeaders=host&x-id=GetObject", {method: 'GET'})
+				.then(res => {
+					return res.blob();
+				})
+				.then(blob => {
+					var url = window.URL.createObjectURL(blob);
+					var a = document.createElement('a');
+					a.href = url;
+					a.download = 'test.json';
+					document.body.appendChild(a);
+					a.click();
+					setTimeout(
+					_ => { window.URL.revokeObjectURL(url); },
+					60000);
+					a.remove();
+				})
+				.catch(err => {
+					console.error('err: ', err);
+				})
+			}
+
+		</script>
+	</body>
+
+</html>

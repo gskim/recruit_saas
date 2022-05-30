@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  recruit-api:
+    image: 107835905686.dkr.ecr.ap-northeast-2.amazonaws.com/recruit-api
+    build:
+      context: ../../..
+      dockerfile: ./packages/api/ci/Dockerfile
+    env_file: ./../.env.production
+    ports:
+      - "80:80"
+    command: ["pm2-runtime", "start", "pm2.config.js"]
+    ulimits:
+      nproc: 99999
+      nofile:
+        soft: 20000
+        hard: 40000
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: /ecs/recruit-api
+        awslogs-region: ap-northeast-2
+        awslogs-stream-prefix: ecs

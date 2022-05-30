@@ -1,0 +1,35 @@
+{
+  "name": "@recruit/interface",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "kim.giseon <kiseon1987@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "src": "src"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+		"@types/node": "^16.0.0",
+		"typescript": "^4.3.5",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0"
+	},
+  "scripts": {
+    "build": "yarn clean && yarn compile",
+		"clean": "rm -rf dist",
+		"compile": "tsc -p tsconfig.json"
+  }
+}

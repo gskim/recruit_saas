@@ -1,0 +1,35 @@
+version: '3'
+
+# networks:
+#   network:
+
+services:
+  mysql:
+    platform: linux/x86_64
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --explicit_defaults_for_timestamp=1
+    container_name: recruit-mysql
+    # networks:
+    #   - network
+    ports:
+      - "3306:3306"
+    environment:
+      - TZ=Asia/Seoul
+      - MYSQL_DATABASE=recruit
+      - MYSQL_USER=recruit
+      - MYSQL_PASSWORD=recruit
+      - MYSQL_ROOT_PASSWORD=recruit
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+  # redis:
+  #   image: redis:4-alpine
+  #   container_name: recruit-redis
+  #   networks:
+  #     - network
+  #   ports:
+  #     - 6379:6379
+
+# docker-compose -f docker-compose.yml up -d
+# docker-compose -f docker-compose.yml down

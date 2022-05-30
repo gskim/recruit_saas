@@ -1,0 +1,25 @@
+version: 1
+task_definition:
+  task_execution_role: ecsTaskExecutionRole
+  task_role_arn: ecsTaskExecutionRole
+  ecs_network_mode: awsvpc
+  task_size:
+    mem_limit: 1GB
+    cpu_limit: 512
+run_params:
+  network_configuration:
+    awsvpc_configuration:
+      subnets:
+        - subnet-0981e2a80e0016ada
+        - subnet-0bb8d69bd5cc33ed7
+        - subnet-0b5f0743c73bdc880
+      security_groups:
+        - sg-0eb1bde5c625e6457
+      assign_public_ip: ENABLED
+  service_discovery:
+      container_name: recruit-api
+      container_port: 80
+
+
+
+
